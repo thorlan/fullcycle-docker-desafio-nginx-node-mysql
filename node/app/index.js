@@ -10,7 +10,7 @@ const config = {
 
 const mysql = require('mysql');
 var connection = mysql.createConnection(config);
-const insertSql = `INSERT INTO PESSOA(nome) VALUES("${generateName()}")`;
+const insertSql = `INSERT INTO PESSOA(NOME) VALUES("${generateName()}")`;
 const selectSql = `SELECT * FROM PESSOA`;
 
 connection.query(insertSql);
@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
     const resultadoQuery = await selectResultPromise(connection2)
     var html = `<h1>FULL CYCLE ROCKS!!</h1>
                   <ul>
-                    ${resultadoQuery.map(r => `<li>${r.nome}</li>`)}
+                    ${resultadoQuery.map(r => `<li>${r.NOME}</li>`)}
                   </ul>
                 `
     connection2.end();

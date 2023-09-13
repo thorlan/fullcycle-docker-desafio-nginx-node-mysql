@@ -4,8 +4,11 @@ services:
     app:
         container_name: app
         entrypoint: wait-for db:3306 -t 40 -- ./start.sh
+        volumes:
+          - ./node:/usr/src/app
+          - /usr/src/app/node_modules
         build:
-          context: ./node/app
+          context: ./node
         ports:
           - "3000:3000"
         networks:

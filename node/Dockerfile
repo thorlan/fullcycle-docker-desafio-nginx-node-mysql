@@ -1,5 +1,8 @@
 FROM node:18
+
 WORKDIR /usr/src/app
+
+VOLUME /usr/src/app
 
 ENV DOCKERIZE_VERSION v0.7.0
 
@@ -8,9 +11,10 @@ RUN apt update && \
     wget -q -O /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for && \
     chmod +x /usr/bin/wait-for
 
-COPY package*.json ./
-COPY start.sh ./
-RUN npm install && npm install mysql && npm install express
-RUN chmod +x start.sh
+
+COPY package.json .
+RUN npm install
+
 COPY . .
+RUN chmod +x start.sh
 EXPOSE 3000

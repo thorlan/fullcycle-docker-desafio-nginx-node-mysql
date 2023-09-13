@@ -2,8 +2,6 @@ FROM node:18
 
 WORKDIR /usr/src/app
 
-VOLUME /usr/src/app
-
 ENV DOCKERIZE_VERSION v0.7.0
 
 RUN apt update && \
